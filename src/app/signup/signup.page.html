@@ -1,0 +1,64 @@
+
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+   </ion-buttons>
+    <ion-title>sign up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="deskPannelShrink"  style="box-shadow: 3px 3px 5px 6px #ccc;">
+  <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">First Name<ion-text color="danger">*</ion-text>
+
+        </ion-label>
+        <ion-input formControlName="FirstName" type="text">
+
+        </ion-input>
+
+      </ion-item>
+      <ion-text color="danger">
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.FirstName.errors?.required">
+         First Name is required.
+        </span></ion-text>
+      <ion-item>
+        <ion-label position="stacked">Last Name <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required type="text" formControlName="LastName"></ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.LastName.errors?.required">
+         Last Name is required.
+        </span></ion-text>
+    
+    <ion-item>
+        <ion-label position="stacked">Address 
+        </ion-label>
+        <ion-input required type="text" formControlName="address"></ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.address.errors?.required">
+          Address is required.
+        </span></ion-text>
+      <ion-item>
+        <ion-label position="stacked">Mobile Number <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required type="text" maxlength="10" formControlName="mobno1"></ion-input>
+      </ion-item>
+      <ion-text color="danger">
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobno1.errors?.required">
+          Mobile Number is required.
+        </span></ion-text>
+      <ion-item>
+        <ion-label position="stacked">Email Id 
+        </ion-label>
+        <ion-input required type="text" formControlName="userEmail"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button type="submit" expand="block">Submit</ion-button>
+  </form>
+  </div>
+</ion-content>

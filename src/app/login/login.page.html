@@ -1,0 +1,21 @@
+
+  <ion-content padding='true' class="form-structor">
+    <form class="signup">   <ion-title style="font-size: 30px; font-weight: 600; padding-top: 10px;">Login</ion-title>
+      <ion-list lass="form-holder">
+      <ion-item lass="form-holder">
+  
+        <ion-input  class="input" placeholder="User Name" autocomplete="off" type="text" name="username" [(ngModel)]="postData.username"></ion-input>
+      </ion-item>
+    
+      <ion-item lass="form-holder">
+          <ion-input  class="input" placeholder="Password" autocomplete="off" type="password" name="password" [(ngModel)]="postData.password"></ion-input>
+      </ion-item>
+    
+      <button class="submit-btn" (click)="loginAction()">Log In</button>
+      <button class="submit-btn" (click)="signup()">Signup</button>
+      </ion-list>
+    </form>	<div class="login slide-up">
+         </div>
+    
+  
+</ion-content>
