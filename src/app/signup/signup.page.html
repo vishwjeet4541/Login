@@ -9,7 +9,7 @@
 
 <ion-content>
   <div class="deskPannelShrink"  style="box-shadow: 3px 3px 5px 6px #ccc;">
-  <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+  <form [formGroup]="loginForm" (ngSubmit)="Submit()">
     <ion-list>
       <ion-item>
         <ion-label position="stacked">First Name<ion-text color="danger">*</ion-text>
@@ -56,6 +56,16 @@
         <ion-label position="stacked">Email Id 
         </ion-label>
         <ion-input required type="text" formControlName="userEmail"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Password
+        </ion-label>
+        <ion-input required type="text" maxlength="4" formControlName="pass"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">confirm password
+        </ion-label>
+        <ion-input required type="text" maxlength="4" formControlName="pass1"></ion-input>
       </ion-item>
     </ion-list>
     <ion-button type="submit" expand="block">Submit</ion-button>

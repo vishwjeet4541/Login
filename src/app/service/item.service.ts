@@ -15,13 +15,7 @@ export class ItemService {
   console.log('in service')
     this.itemsCollection = this.afs.collection('items', ref => ref.orderBy('title','asc'));
 
-    this.items = this.itemsCollection.snapshotChanges().map(changes => {
-      return changes.map(a => {
-        const data = a.payload.doc.data() as Item;
-        data.id = a.payload.doc.id;
-        return data;
-      });
-    });
+ 
   }
 
   getItems(){

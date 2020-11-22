@@ -24,7 +24,8 @@ export class SignupPage implements OnInit {
       LastName: ['',[Validators.required, Validators.minLength(2)]],
       address: ['',[Validators.required, Validators.minLength(2)]],
       mobno1: ['',[Validators.required, Validators.minLength(10) , Validators.maxLength(10)]],
-      // BusinessName: [''],
+      pass:['',[Validators.required, Validators.maxLength(4)]],
+      pass1: [''],
      userEmail:['']
 
   });
@@ -35,11 +36,20 @@ export class SignupPage implements OnInit {
   get errorControl() {
     return this.loginForm.controls;
   }
+  
+Submit(){     
+  let Formdata = this.loginForm.value
+    if(Formdata.pass != Formdata.pass1){ Swal.fire('Password Not Match') 
+return false
+} else this.submitForm(); 
+
+}
   async submitForm(){
     
     this.isSubmitted = true;
     let Formdata = this.loginForm.value
     // var TId = this.ionicForm.value['TransactionID']
+ 
     if (!this.loginForm.valid) {
       console.log('Please provide all the required values!')
       return false;
@@ -56,7 +66,7 @@ export class SignupPage implements OnInit {
 			LastName:FormData.LastName,
       username: FormData.mobno1,
       BusinessName: '9881717477',
-			password: Math.floor(1000 + Math.random() * 9000).toString(),
+			password: FormData.pass,
 			address: FormData.address,
       userEmail: FormData.userEmail,
       status: "",
