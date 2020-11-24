@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+import { AuthGuardService } from './services/auth-guard.service';
 const routes: Routes = [
   {
     path: '',
@@ -10,7 +10,8 @@ const routes: Routes = [
 
   {
     path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule),
+    
   },
   {
     path: 'login',

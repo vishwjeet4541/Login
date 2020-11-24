@@ -20,6 +20,7 @@ import { FormBuilder } from '@angular/forms';
 import { Camera, CameraOptions } from 'ionic-native';
 import { File } from '@ionic-native/file/ngx';
 import { environment } from 'src/environments/environment.prod';
+import { AuthenticationService } from './services/authentication.service';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { environment } from 'src/environments/environment.prod';
   providers: [ItemService,
     StatusBar,
     SplashScreen, FormBuilder,   File,
-    Camera,
+    Camera, AuthenticationService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: AuthHeaderInterceptor, multi: true },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

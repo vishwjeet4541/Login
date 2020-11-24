@@ -40,10 +40,11 @@ export class LoginPage implements OnInit {
   phone: any;
   constructor(private toastService: ToastService, 
 private authService: AuthService,
-private storageService: StorageService, public loadingController:LoadingController, public nav:NavController,private http: HttpService ,private storage: Storage,)  {
+private storageService: StorageService,public menuCtrl: MenuController, public loadingController:LoadingController, public nav:NavController,private http: HttpService ,private storage: Storage,)  {
      }
 
   ngOnInit() {
+    this.menuCtrl.enable(false); 
   }
  
 
@@ -66,24 +67,27 @@ private storageService: StorageService, public loadingController:LoadingControll
         await loading.present();
       this.authService.login(this.postData).subscribe(
       (res) => {
-      
-        sessionStorage.setItem('isLoggedin', 'true');
+        console.log("Response")
+        this.storage.set('isLoggedin', 'true')
         sessionStorage.setItem('loggedInUser', res)
+        loading.dismiss();
+        this.nav.navigateRoot('dashboard')
      let val = sessionStorage.getItem('loggedInUser')
       this.data  = AES.decrypt(val,'Test').toString(utf8);
       this.data1 = JSON.parse(this.data)
       if (res.postData !== null ) {
       loading.dismiss();
-        this.nav.navigateForward('dashboard')
-      } else {
+      console.log("loader")
+        this.nav.navigateRoot('dashboard')
+      } else {   loading.dismiss();
       this.toastService.presentToast('Incorrect username and password.');
       }
       },
-      (error: any) => {
+      (error: any) => {  loading.dismiss();
       this.toastService.presentToast(' Enter Valide Username & Password');
       }
       );
-      } else {
+      } else {  
       this.toastService.presentToast(
       'Please enter username or password.'
       );

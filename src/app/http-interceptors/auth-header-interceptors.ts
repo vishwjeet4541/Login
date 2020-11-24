@@ -14,7 +14,6 @@ export class AuthHeaderInterceptor implements HttpInterceptor {
     this.data  = AES.decrypt(val,'Test').toString(utf8);
     this.data1 = JSON.parse(this.data)
     console.log("Token",this.data1.token)
-    // this.UserName =  this.data1.token;
     const token = "Bearer " + this.data1.token;
     if (token) {
       const cloned = req.clone({
